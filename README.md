@@ -1,8 +1,16 @@
-Things did in Section 5: Lesson 1/1
+Things done in Section 6: Lesson 4 (1/2)
 
-- Added a Browser Router in index.js
-- Route exact i.e path='/' path='/hats' and url='localhost:3000/hats' it will still display homepage component corresponding to '/' path if without exact
-- React-router-demo application
-- Prop tunneling/Prop drilling: Only our homepage component gets access to the {history} prop through the <Route> component although directory and menu-item are its children. Now, we need to pass the {history} as a prop to other nested components and so on. This is called prop tunneling/prop drilling which is a bad programming pattern.
-- Use of Spread operator in directory.component.jsx
-- For routing to any other place with history.push() we need to give it the whole URL as we also need to know where we are in the app to navigate to another place.
+- added a Shop page
+- a collection-preview and collection-item component with styles
+- a Header component
+
+  - text-decoration none
+  - styling
+  - using <Link> tag
+  - adding an svg icon
+
+    - In the previous lesson, you may have seen the strange syntax: import { ReactComponent as Logo }
+
+    This is a new special syntax when importing SVG in React. The ReactComponent import name is special and tells Create React App that you want a React component that renders an SVG, rather than its filename. You can read more about it here, but keep in mind that this is a React library special syntax:
+
+    https://facebook.github.io/create-react-app/docs/adding-images-fonts-and-files
