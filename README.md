@@ -1,4 +1,4 @@
-Things did in Section 5: Lesson 1/1
+Things did in Section 5: Lesson 3 (1/1)
 
 - Added a Browser Router in index.js
 - Route exact i.e path='/' path='/hats' and url='localhost:3000/hats' it will still display homepage component corresponding to '/' path if without exact
