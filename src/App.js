@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
 import './App.css';
 
@@ -8,22 +8,21 @@ import ShopPage from './pages/shop/shop.component';
 import Header from './components/header/header.component';
 import SignInAndSignUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
 import Contact from './pages/contact/contact.component';
-import { auth, createUserProfileDocument } from './firebase/firebase.utils';
+import {
+  auth,
+  createUserProfileDocument,
+  getProducts,
+} from './firebase/firebase.utils';
+import { connect } from 'react-redux';
+import { setCurrentUser } from './redux/user/user.actions';
 
 const NotFound = () => <div>ERROR 404: NOT FOUND</div>;
 
 class App extends React.Component {
-  constructor() {
-    super();
-
-    this.state = {
-      currentUser: null,
-    };
-  }
-
   unsubscribeFromAuth = null;
 
   componentDidMount() {
+    // getProducts();
     //onAuthStateChange tells if someone signed in/out
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
       //firebase gives us the last user signed in from so we don't have to manually check or the user doesn't need to re-signin bcz of firebase session persistance
@@ -40,15 +39,13 @@ class App extends React.Component {
         //signedin case
         const userRef = await createUserProfileDocument(userAuth);
         userRef.onSnapshot((snapshot) =>
-          this.setState({
-            currentUser: {
-              id: snapshot.id,
-              ...snapshot.data(),
-            },
+          this.props.setCurrentUser({
+            id: snapshot.id,
+            ...snapshot.data(),
           })
         );
       } else {
-        this.setState({ currentUser: userAuth }); //signout case - null
+        this.props.setCurrentUser(userAuth); //signout case - null
       }
     });
   }
@@ -61,12 +58,22 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Header currentUser={this.state.currentUser} />
+        <Header />
         <Switch>
           <Route exact path='/' component={HomePage} />
-          <Route exact path='/shop' component={ShopPage} />
+          <Route path='/shop' component={ShopPage} />
           <Route exact path='/contact' component={Contact} />
-          <Route exact path='/signin' component={SignInAndSignUpPage} />
+          <Route
+            exact
+            path='/signin'
+            render={() =>
+              this.props.currentUser ? (
+                <Redirect to='/' />
+              ) : (
+                <SignInAndSignUpPage />
+              )
+            }
+          />
           <Route path='/*' component={NotFound} />
         </Switch>
       </div>
@@ -74,4 +81,12 @@ class App extends React.Component {
   }
 }
 
-export default App;
+const mapStateToProps = (state) => ({
+  currentUser: state.user.currentUser,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  setCurrentUser: (user) => dispatch(setCurrentUser(user)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

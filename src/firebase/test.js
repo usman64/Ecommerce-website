@@ -11,3 +11,6 @@ firestore
   .doc('RMiZgqSe8aaimLR8oXP7');
 firestore.doc('/users/OCusa8SkVbhT5iryG12v/cartItems/RMiZgqSe8aaimLR8oXP7');
 firestore.collection('/users/OCusa8SkVbhT5iryG12v/cartItems');
+
+//firestore
+firestore.collections('products');

@@ -1,6 +1,7 @@
-Things done in Section 7: Lesson 6 (2/2)
+Things done in Section 8: Lesson 9
 
-- Firebase (see folder)
-- {box-sizing: border-box;} problem in padding in forminput group
-- custom buttom file edited
-- App.js edited for making it whole app aware of sign-in with auth object
+- Redux integration
+- user
+- cart
+- cartdropdown
+- Selectors
