@@ -55,11 +55,11 @@ provider.setCustomParameters({ prompt: 'select_account' }); //use setCustomProvi
 
 export const signInWithGoogle = () => auth.signInWithPopup(provider);
 
-export const getProducts = async () => {
-  const productsRef = firestore.collection('products');
-  const products = await productsRef.get();
+// export const getProducts = async () => {
+//   const productsRef = firestore.collection('products');
+//   const products = await productsRef.get();
 
-  console.log(products.docs.map(async (doc) => await doc.ref.get()));
-};
+//   console.log(products.docs.map(async (doc) => await doc.ref.get()));
+// };
 
 export default firebase;
