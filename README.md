@@ -1,11 +1,11 @@
-Things done in Section 8: Lesson 10 (Redux & Selectors)
+Things done in Section 9: Lesson 11 (Session Management & Redux Perist)
 
-- UTF8-dingbats
-- user Selector
-- Reselect
-  - createSelector
-  - createStructuredSelector
-- Connect passes disptach into component if we do not provide it a 2nd argument
-- Checkout Page
-- CheckoutItem component
-- Add/Remove Cart Items
+- window.LocalStorage
+- window.sessionStorage
+- Redux Persist
+  - persistor
+    - export const persistor = persistStore(store); //persisted version of store
+  - PeristGate
+    - <PersistGate persistor={persistor}>
+        <App />
+      </PersistGate>

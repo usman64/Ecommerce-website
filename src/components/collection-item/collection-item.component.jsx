@@ -12,8 +12,8 @@ const collectionItem = ({ item, addItem }) => {
     <div className='collection-item'>
       <div className='image' style={{ backgroundImage: `url(${imageUrl})` }} />
       <div className='collection-footer'>
-        <span className='name'>{name}</span>
-        <span className='price'>{price}</span>
+        <div className='name'>{name}</div>
+        <div className='price'>$ {price}</div>
       </div>
       <CustomButton onClick={() => addItem(item)} inverted>
         Add To Cart
