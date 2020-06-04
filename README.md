@@ -1,11 +1,8 @@
-Things done in Section 9: Lesson 11 (Session Management & Redux Perist)
+Things done in Section 10: Lesson 12 (Redux 2)
 
-- window.LocalStorage
-- window.sessionStorage
-- Redux Persist
-  - persistor
-    - export const persistor = persistStore(store); //persisted version of store
-  - PeristGate
-    - <PersistGate persistor={persistor}>
-        <App />
-      </PersistGate>
+- Mostly code-Refactoring nothing special
+- Make everything in a reducer -> Easier for testing
+- redux
+  - directory
+  - shop
+- CollectionsOverview Component
