@@ -1,5 +1,5 @@
 import React from 'react';
-import Iframe from 'react-iframe';
+// import Iframe from 'react-iframe';
 
 class Contact extends React.Component {
   state = {
@@ -21,8 +21,8 @@ class Contact extends React.Component {
           width: '100%',
         }}
       >
-        CONTACT
-        {this.state.isMobile ? (
+        ... Development in Progress
+        {/* {this.state.isMobile ? (
           'Mobile View Not supported. Please open on a Computer'
         ) : (
           <Iframe
@@ -36,7 +36,7 @@ class Contact extends React.Component {
             onError={() => this.setState({ isError: true })}
           />
         )}
-        {this.state.isError ? 'Error' : null}
+        {this.state.isError ? 'Error' : null} */}
       </div>
     );
   }

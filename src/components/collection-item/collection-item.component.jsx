@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
 import { addItem } from '../../redux/cart/cart.actions';
@@ -6,8 +6,9 @@ import { addItem } from '../../redux/cart/cart.actions';
 import './collection-item.styles.scss';
 import CustomButton from '../custom-button/custom-button.component';
 
-const collectionItem = ({ item, addItem }) => {
+const CollectionItem = ({ item, addItem }) => {
   const { name, price, imageUrl } = item;
+  const [clicked, setClicked] = useState(false);
   return (
     <div className='collection-item'>
       <div className='image' style={{ backgroundImage: `url(${imageUrl})` }} />
@@ -15,8 +16,14 @@ const collectionItem = ({ item, addItem }) => {
         <div className='name'>{name}</div>
         <div className='price'>$ {price}</div>
       </div>
-      <CustomButton onClick={() => addItem(item)} inverted>
-        Add To Cart
+      <CustomButton
+        onClick={() => {
+          setClicked(true);
+          addItem(item);
+        }}
+        inverted
+      >
+        {clicked ? `Add More` : `Add To Cart`}
       </CustomButton>
     </div>
   );
@@ -26,4 +33,4 @@ const mapDispatchToProps = (dispatch) => ({
   addItem: (item) => dispatch(addItem(item)),
 });
 
-export default connect(null, mapDispatchToProps)(collectionItem);
+export default connect(null, mapDispatchToProps)(CollectionItem);
